@@ -7,7 +7,11 @@ export default function getApi({ keyword = "cat" } = {}) {
     .then((response) => {
       const { data = [] } = response;
       if (Array.isArray(data)) {
-        const gifs = data.map((image) => image.images.downsized_medium.url);
+        const gifs = data.map((image) => {
+          const { images, title, id } = image;
+          const { url } = images.downsized_medium;
+          return { title, id, url };
+        });
         return gifs;
       }
     });
