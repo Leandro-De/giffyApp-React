@@ -1,18 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from "react";
+import getApi from "./services/getApi";
 
-import './App.css';
+import "./App.css";
 
-function App() {
+const App = () => {
+  //State para los gifs
+  const [gifs, setGifs] = useState([""]);
 
-const [gifs, setGif] = useState(['']);
+  useEffect(() => {
+    getApi({ keyword: "morty" }).then((gifs) => setGifs(gifs));
+  }, []);
 
   return (
     <div className="App">
       <section className="App-header">
-        {gifs}
+        {gifs.map((singleGif) => (
+          <img src={singleGif} />
+        ))}
       </section>
     </div>
   );
-}
+};
 
 export default App;
