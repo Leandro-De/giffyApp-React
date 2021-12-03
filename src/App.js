@@ -1,5 +1,5 @@
 import React from "react";
-import ListOfGifs from "./components/ListOfGifs";
+import Home from "./Pages/Home";
 import { Link, Route } from "wouter";
 import "./App.css";
 
@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div className="App">
       <section className="App-header">
-        <Link to="gif/cat">Git cat</Link>
-        <Route path="/gif/:keyword" component={ListOfGifs} />
+        <Link to="/">Hola</Link>
+        <Route path="/" component={Home} />
       </section>
     </div>
   );
